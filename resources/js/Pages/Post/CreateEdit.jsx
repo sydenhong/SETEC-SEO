@@ -98,14 +98,20 @@ export default function PostCreateEdit({ datas, category }) {
                                     </div>
                                     <div className="form-group">
                                         <label className='text-uppercase' htmlFor="description"><span className='text-danger'>*</span>Description</label>
-                                        <input
+                                        {/* <input
                                             value={data.description}
                                             onChange={(e) => setData('description', e.target.value)}
                                             type="text"
                                             name="description"
                                             className={`form-control ${errors.description && 'is-invalid'}`}
                                             id="description"
-                                        />
+                                        /> */}
+                                        <textarea 
+                                            onChange={(e) => setData('description', e.target.value)}
+                                            name="description"
+                                            className={`form-control ${errors.description && 'is-invalid'}`}
+                                            id="description"
+                                        >{data.description}</textarea>
                                         <InputError className="mt-2" message={errors.description} />
                                     </div>
                                     <div className="form-group">
