@@ -47,8 +47,9 @@ export default function PostDetail({ postDataDetail }) {
                                         style={{ float: 'left', marginRight: '10px' }} 
                                     />
                                     <div className="card-text">
+                                        <br/>
                                         <h6>Category: {postDataDetail?.category?.name}</h6>
-                                        <p>{postDataDetail.description}</p>
+                                        <p className="card-text" dangerouslySetInnerHTML={{ __html: postDataDetail?.description }} />
                                     </div>
                                 </div>
                             </article>

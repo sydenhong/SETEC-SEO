@@ -87,7 +87,11 @@ export default function PostPage({ postData }) {
                                                 <tr key={k}>
                                                     <td>{item?.id}</td>
                                                     <td>{item?.title}</td>
-                                                    <td>{item?.description}</td>
+                                                    <td>
+                                                        <div
+                                                            dangerouslySetInnerHTML={{ __html: item?.description }}
+                                                        />
+                                                    </td>
                                                     <td>
                                                         <img src={`/storage/${item.image}`} width={'100px'}/>
                                                     </td>

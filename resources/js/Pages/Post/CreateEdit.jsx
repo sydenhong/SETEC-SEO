@@ -8,8 +8,19 @@ import AdminLTELayout from '@/Layouts/AdminLTELayout';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Transition } from '@headlessui/react';
 import { Head, Link, useForm } from '@inertiajs/react';
+import { useState } from 'react';
+import ReactSummernote from 'react-summernote';
+// Required imports for Summernote to work
+import 'bootstrap/dist/css/bootstrap.css';
+import 'summernote/dist/summernote-bs4.css';
+import 'react-summernote/dist/react-summernote.css';
+
+import 'jquery';
+import 'bootstrap';
+import 'summernote/dist/summernote-bs4.js';
 
 export default function PostCreateEdit({ datas, category }) {
+    const [content, setContent] = useState('');
     const { data, setData, post, patch, errors, reset, processing, recentlySuccessful } =
         useForm({
             category_id: datas.category_id ? datas.category_id : '',
@@ -98,20 +109,24 @@ export default function PostCreateEdit({ datas, category }) {
                                     </div>
                                     <div className="form-group">
                                         <label className='text-uppercase' htmlFor="description"><span className='text-danger'>*</span>Description</label>
-                                        {/* <input
+                                        
+                                        <ReactSummernote
                                             value={data.description}
-                                            onChange={(e) => setData('description', e.target.value)}
-                                            type="text"
-                                            name="description"
-                                            className={`form-control ${errors.description && 'is-invalid'}`}
+                                            options={{
+                                            height: 300,
+                                            dialogsInBody: true,
+                                            toolbar: [
+                                                ['style', ['style']],
+                                                ['font', ['bold', 'underline', 'clear']],
+                                                ['fontname', ['fontname']],
+                                                ['para', ['ul', 'ol', 'paragraph']],
+                                                ['insert', ['link', 'picture', 'video']],
+                                                ['view', ['fullscreen', 'codeview']]
+                                            ]
+                                            }}
+                                            onChange={(e) => setData('description', e)}
                                             id="description"
-                                        /> */}
-                                        <textarea 
-                                            onChange={(e) => setData('description', e.target.value)}
-                                            name="description"
-                                            className={`form-control ${errors.description && 'is-invalid'}`}
-                                            id="description"
-                                        >{data.description}</textarea>
+                                        />
                                         <InputError className="mt-2" message={errors.description} />
                                     </div>
                                     <div className="form-group">

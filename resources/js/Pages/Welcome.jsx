@@ -1,9 +1,25 @@
 import Pagination from '@/Components/Pagination';
 import AdminLTELayoutGuest from '@/Layouts/AdminLTELayoutGuest';
 import { Head, Link } from '@inertiajs/react';
+import { htmlToText } from 'html-to-text';
 
 export default function Welcome({ postData }) {
     const datasList = postData?.data;
+
+    function truncateHtmlWords(html, wordLimit = 50) {
+        // Convert to plain text
+        const plainText = htmlToText(html, {
+            wordwrap: false,
+            selectors: [
+            { selector: 'a', options: { ignoreHref: true } } // optional
+            ]
+        });
+
+        // Limit to N words
+        const words = plainText.split(/\s+/);
+        if (words.length <= wordLimit) return plainText;
+        return words.slice(0, wordLimit).join(' ') + '...';
+    }
 
     return (
         <AdminLTELayoutGuest>
@@ -39,11 +55,10 @@ export default function Welcome({ postData }) {
                                         <div className="d-flex">
                                             <img 
                                                 src={`/storage/${item.image}`} 
-                                                alt={item.title} 
-                                                width="150" 
-                                                style={{ float: 'left', marginRight: '10px' }} 
+                                                alt={item.title}
+                                                style={{ float: 'left', marginRight: '10px', 'max-width': '150px', 'max-height': '151px'}} 
                                             />
-                                            <p className="card-text">{item.description}</p>
+                                            <p>{truncateHtmlWords(item?.description)}</p>
                                         </div>
                                         <Link href={`/posts/detail/${item.id}`} className="card-link">Read More</Link>
                                     </div>
