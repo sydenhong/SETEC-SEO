@@ -68,7 +68,7 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Post $post)
+    public function edit(Post $post, $id)
     {
         $rsDatasModel = Post::find($id);
         return Inertia::render('Post/CreateEdit', [
@@ -79,7 +79,7 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, Post $post, $id)
     {
         $request->validate([
             'category_id' => 'required',
@@ -97,7 +97,7 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Post $post)
+    public function destroy(Post $post, $id)
     {
         $rsDatasModel = Post::find($id);
         $rsDatasModel->delete();
