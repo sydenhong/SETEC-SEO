@@ -28,11 +28,11 @@ const AdminLTELayoutGuest = ({ breadcrumb, children }) => {
                     <div class="navbar-collapse order-3" id="navbarCollapse">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a href="/" class="nav-link">HOME</a>
+                                <Link href="/" class="nav-link">HOME</Link>
                             </li>
-                            <li class="nav-item">
+                            {/* <li class="nav-item">
                                 <a href="/posts" class="nav-link">POST</a>
-                            </li>
+                            </li> */}
                         </ul>
 
                         {/* <!-- SEARCH FORM --> */}
