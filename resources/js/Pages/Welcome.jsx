@@ -51,7 +51,7 @@ export default function Welcome({ postData }) {
                             <div key={item.id} className="col-lg-12">
                                 <article className="card mb-4">
                                     <div className="card-body">
-                                        <h2>{item.title}</h2>
+                                        <h1>{item.title}</h1>
                                         <div className="d-flex">
                                             <img 
                                                 src={`/storage/${item.image}`} 

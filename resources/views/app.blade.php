@@ -15,6 +15,7 @@
         @viteReactRefresh
         @vite(['resources/js/app.jsx', "resources/js/Pages/{$page['component']}.jsx"])
         @inertiaHead
+        <script src="https://analytics.ahrefs.com/analytics.js" data-key="NRYYlWgk9uekVssJvla9QA" async></script>
     </head>
     <body class="font-sans antialiased">
         @inertia
